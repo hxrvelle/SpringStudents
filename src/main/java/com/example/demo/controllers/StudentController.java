@@ -49,15 +49,20 @@ public class StudentController {
         return "editStudent";
     }
 
-    @PostMapping("/editStudent/{id}")
+    @PostMapping("/editStudent")
     public String editStudent(
-            @PathVariable(value = "id") Long id,
+            @RequestParam long id,
             @RequestParam String lastname,
             @RequestParam String name,
             @RequestParam String stream_group,
             @RequestParam Date date
             ) {
-        Student student = new Student(lastname, name, stream_group, true, date);
+        Optional<Student> existingStudent = studentRepo.findById(id);
+        Student student = existingStudent.get();
+        student.name = name;
+        student.lastname = lastname;
+        student.stream_group = stream_group;
+        student.date = date;
         studentRepo.save(student);
         return "redirect:/students";
     }
