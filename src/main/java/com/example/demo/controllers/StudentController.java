@@ -49,7 +49,7 @@ public class StudentController {
         return "editStudent";
     }
 
-    @PutMapping("/editStudent/{id}")
+    @PostMapping("/editStudent/{id}")
     public String editStudent(
             @PathVariable(value = "id") Long id,
             @RequestParam String lastname,
