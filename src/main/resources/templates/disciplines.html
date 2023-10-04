@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Дисциплины</title>
+  <script src="https://kit.fontawesome.com/47ae1cb85a.js" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Название дисциплины</th>
+      <th scope="col">Управление</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="dis : ${disciplines}">
+      <th scope="row" th:text="${dis.id}" />
+      <td th:text="${dis.discipline}" />
+      <td>
+        <a th:href="'/editDiscipline/'+${dis.id}" class="btn btn-outline-primary btn-sm me-3" title="Редактировать дисциплину"><i class="fa-regular fa-pen-to-square"></i></a>
+        <a th:href="'/deleteDiscipline/'+${dis.id}" class="btn btn-outline-danger btn-sm" title="Удалить дисциплину"><i class="fa-solid fa-trash-can"></i></a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

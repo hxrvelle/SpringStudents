@@ -43,9 +43,7 @@ public class StudentController {
     public String editStudent(@PathVariable(value = "id") long id, Model model) {
         new Student();
         Optional<Student> student = studentRepo.findById(id);
-        if (student.isPresent()) {
-            model.addAttribute("student", student.get());
-        }
+        model.addAttribute("student", student.get());
         return "editStudent";
     }
 
