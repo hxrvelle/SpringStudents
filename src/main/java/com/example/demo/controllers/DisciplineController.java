@@ -28,16 +28,13 @@ public class DisciplineController {
         return "addDiscipline";
     }
     @PostMapping("/addDiscipline")
-    public String addDiscipline(
-            @RequestParam String discipline
-    ) {
+    public String addDiscipline(@RequestParam String discipline) {
         Discipline newDiscipline = new Discipline(discipline,1);
         disciplineRepo.save(newDiscipline);
         return "redirect:/disciplines";
     }
     @GetMapping("/editDiscipline/{id}")
     public String editDiscipline(@PathVariable(value = "id") long id, Model model) {
-        new Discipline();
         Optional<Discipline> discipline = disciplineRepo.findById(id);
         model.addAttribute("discipline", discipline.get());
         return "editDiscipline";
